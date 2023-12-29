@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Year Celebration</title>
+    <style>
+        body {
+            background-color: #5e4934; /* Brown background */
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #e0c3a6; /* Light brown text color */
+        }
+
+        #countdown {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #e0c3a6; /* Light brown text color */
+        }
+
+        #fireworks {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+
+        .firework {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ffd700; /* Gold color */
+            border-radius: 50%;
+            animation: fireworksAnimation 2s ease-in-out infinite;
+        }
+
+        @keyframes fireworksAnimation {
+            0% {
+                transform: translateY(0) rotate(0);
+                opacity: 0;
+            }
+            50% {
+                transform: translateY(-50px) rotate(180deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        #trailerSection {
+            display: none;
+            margin-top: 30px;
+            max-width: 600px;
+            text-align: center;
+            color: #e0c3a6; /* Light brown text color */
+        }
+
+        #trailerText {
+            font-size: 1.2em;
+        }
+
+        #trailerButton {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #ffd700; /* Gold color */
+            border: none;
+            color: #5e4934; /* Brown text color */
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Happy New Year!</h1>
+    <div id="countdown">Countdown to 2024: <span id="timer"></span></div>
+    <div id="fireworks">
+        <div class="firework"></div>
+        <div class="firework"></div>
+        <div class="firework"></div>
+        <!-- Add more firework elements as needed -->
+    </div>
+    
+
+    <button id="trailerButton" onclick="showTrailer()">Trailer of Your 2024 in Words</button>
+    <div id="trailerSection">
+        <p id="trailerText">Exciting things are coming in 2024! Get ready for a year full of joy, success, and memorable moments.</p>
+    </div>
+
+    <script>
+        // Countdown Timer
+        function countdown() {
+            const countDate = new Date("Jan 1, 2024 00:00:00").getTime();
+            const now = new Date().getTime();
+            const gap = countDate - now;
+
+            const seconds = 1000;
+            const minutes = seconds * 60;
+            const hours = minutes * 60;
+            const days = hours * 24;
+
+            const textDays = Math.floor(gap / days);
+            const textHours = Math.floor((gap % days) / hours);
+            const textMinutes = Math.floor((gap % hours) / minutes);
+            const textSeconds = Math.floor((gap % minutes) / seconds);
+
+            document.getElementById("timer").innerText = `${textDays}d ${textHours}h ${textMinutes}m ${textSeconds}s`;
+        }
+
+        setInterval(countdown, 1000);
+
+        // Show trailer function
+        function showTrailer() {
+            document.getElementById("trailerSection").style.display = "block";
+        }
+    </script>
+</body>
+</html>
